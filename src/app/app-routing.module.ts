@@ -4,23 +4,28 @@ import { AccountComponent } from './core/component/layouts/account/account.compo
 
 const routes: Routes = [
   {
-  path:'',
-  redirectTo:'account/login',
-  pathMatch:'full'
-},{
-  path:'account/login',
-  component:AccountComponent,
-  children:[
-    {
-      path:'',
-      loadChildren:()=>import('./pages/account/login/login.module').then(m=>m.LoginModule)
-    }
-  ]
-}
-
+    path: '',
+    redirectTo: 'account/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    data: { pageTitle: "Account Master Page" },
+    children: [
+      {
+        path: 'login',
+        data: { pageTitle: "Login Page" },
+        loadChildren: () => import('./pages/account/login/login.module').then(m => m.LoginModule)
+      },
+      {
+        path: 'forgot-password',
+        data: { pageTitle: "Forgot Password Page" },
+        loadChildren: () => import('./pages/account/login/login.module').then(m => m.LoginModule)
+      }
+    ]
+  }
 ];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
