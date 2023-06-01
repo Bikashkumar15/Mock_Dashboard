@@ -4,9 +4,8 @@ import { LoginComponent } from './login.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AccountService } from '../account.service';
-
-
+import { AuthService } from '../../../core/services/auth.service';
+import { MaterialModule } from 'src/app/shared';
 
 @NgModule({
   declarations: [
@@ -16,6 +15,7 @@ import { AccountService } from '../account.service';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    MaterialModule,
     RouterModule.forChild(
       [
         {
@@ -26,6 +26,6 @@ import { AccountService } from '../account.service';
       ]
       ),
   ],
-  providers:[AccountService]
+  providers:[AuthService]
 })
 export class LoginModule { }

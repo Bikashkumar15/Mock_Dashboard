@@ -1,5 +1,6 @@
 export interface ILogin {
-    username:string;
-    password:string;
-    rememberme?:boolean;
-}
+    userName: string;
+    password: string;
+    remeberMe?: boolean;
+  }
+  
