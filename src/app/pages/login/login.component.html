@@ -1,0 +1,97 @@
+<form #loginForm="ngForm" (submit)="postLoginForm()">
+    <section aria-describedby="Header" class="text-center">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    </section>
+  
+    <section aria-describedby="Message" *ngIf="apiResponse.message">
+      <p
+        [ngClass]="{
+          'text-danger': apiResponse.id < 0,
+          'text-success': apiResponse.id > 0
+        }"
+      >
+        {{ apiResponse.message }}
+      </p>
+    </section>
+  
+    <section aria-describedby="Login inputs">
+      <div class="form-floating">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            type="email"
+            #emailRef="ngModel"
+            name="floatingInput"
+            [(ngModel)]="loginInput.username"
+            placeholder="Enter user name..."
+            required
+          />
+        </mat-form-field>
+  
+        <p *ngIf="emailRef.errors && emailRef.touched" class="text-danger">
+          <span *ngIf="emailRef.errors['required']"> Username field is required</span>
+        </p>
+      </div>
+
+      
+      <div class="form-floating mt-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            #passwordRef="ngModel"
+            name="floatingPassword"
+            [(ngModel)]="loginInput.password"
+            placeholder="Enter password..."
+            required
+          />
+        </mat-form-field>
+        <p *ngIf="passwordRef.errors && passwordRef.touched" class="text-danger">
+          <span *ngIf="passwordRef.errors['required']"
+            >Password field is required!</span
+          >
+        </p>
+      </div>
+  
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Checkbox -->
+        <div class="form-check mb-0">
+          <input 
+          class="form-check-input me-2" 
+          type="checkbox"
+          name="remeberme"
+          [(ngModel)]="loginInput.remeberMe"
+          value="remember-me"
+          id="form2Example3" />
+          <label class="form-check-label" for="form2Example3">
+            Remember me
+          </label>
+        </div>
+        <a href="#!" class="text-body">Forgot password?</a>
+      </div>
+
+      <div class="text-center text-lg-start mt-4 pt-2">
+        <button 
+           class="btn btn-primary btn-lg"
+          style="padding-left: 2.5rem;padding-right: 2.5rem;"
+          type="submit"
+          [disabled]="loginForm.invalid || sending"
+          >{{ sending ? "Please wait..." : "Login" }}
+         
+        </button>
+       <!-- <h6 style="color: red;"> {{ unauthorized ? "Opps !! Bad Credentils !!!" : "" }}</h6> -->
+       <div *ngIf="unauthorized" class="alert alert-danger">
+        <strong>Sorry !</strong> Invalid Credenatials 
+      </div>
+        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? 
+          <a routerLink="register" routerLinkActive="active" style="color: #280aea;">Register</a>
+
+        </p>
+      </div>
+    </section>
+  
+
+  </form>
+  

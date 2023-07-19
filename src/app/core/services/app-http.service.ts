@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AppConstants } from "src/app/constants";
 import { environment } from "src/environments/environment";
@@ -15,10 +15,13 @@ export class AppHttpService{
 
     };
         public get(relativeUrl:string){
+            console.log("i m appservice");
             const url:string=environment.baseApi+relativeUrl;
-            this._headers.headers.Authorization='Bearer'+localStorage.getItem(AppConstants.myTokenKey);
+            console.log(url);
+            this._headers.headers.Authorization='Bearer '+localStorage.getItem(AppConstants.myTokenKey);
             return this._httpClient.get(url,this._headers);
         }
+
         public post(relativeUrl:string,body:any){
             const url:string=environment.baseApi+relativeUrl;
             this._headers.headers.Authorization='Bearer'+localStorage.getItem(AppConstants.myTokenKey);

@@ -1,0 +1,111 @@
+<div class="col-sm-9 col-xs-12 content pt-50 pl-0">
+  <div class="row">
+
+ 
+
+
+
+    <div class="col-lg-3 col-md-2 col-sm-2">
+        <label for="Sensor"> Customer Name </label>
+        <select name="" id="" class="form-control" [(ngModel)]="slectedSensor" (change)="getSensorList()">
+            <option [ngValue]="sens" *ngFor="let sens of machineIds">{{sens?.customerName}}</option>
+        </select>
+    </div>
+    <div class="col-lg-3 col-md-2 col-sm-2">
+        <label for="date"> From Date </label>
+        <input type="date" [(ngModel)]="fromDate" class="form-control" [min]="minV" [max]="maxV"
+            (change)="getSensorList()">
+    </div>
+    <div class="col-lg-3 col-md-2 col-sm-2">
+        <label for="date"> ToDate </label>
+        <input type="date" [(ngModel)]="toDate" class="form-control" [min]="minV" [max]="maxV"
+            (change)="getSensorList()">
+    </div>
+    <div class="col-lg-3 col-md-2 col-sm-2">
+     
+      <button class="btn btn-danger form-control" style="margin-top:23px;" (click)="ExportTOExcel()">Export as Excel</button>
+    </div>
+</div>
+
+ 
+  <div class=" " #TABLE>
+    <table mat-table #table [dataSource]="datasource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="deviceId">
+        <th mat-header-cell *matHeaderCellDef> DeviceId </th>
+        <td mat-cell *matCellDef="let element" title={{element.deviceId}}> {{element.deviceId |slice: -4}}.... </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="latitude">
+        <th mat-header-cell *matHeaderCellDef> Geo Position </th>
+        <td mat-cell *matCellDef="let element"> {{element.latitude}},{{element.longitude}}</td>
+      </ng-container>
+      <!-- Name Column -->
+      <!-- <ng-container matColumnDef="longitude">
+        <th mat-header-cell *matHeaderCellDef> Longitude </th>
+        <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+      </ng-container> -->
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="tdsSens1">
+        <th mat-header-cell *matHeaderCellDef> tdsSens1 </th>
+        <td mat-cell *matCellDef="let element"> {{element.tdsSens1}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="tdsSens2">
+        <th mat-header-cell *matHeaderCellDef> tdsSens2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.tdsSens2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tdsSens3">
+        <th mat-header-cell *matHeaderCellDef> tdsSens3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.tdsSens3}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="tempSens1">
+        <th mat-header-cell *matHeaderCellDef> tempSens1 </th>
+        <td mat-cell *matCellDef="let element"> {{element.tempSens1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tempSens2">
+        <th mat-header-cell *matHeaderCellDef> tempSens2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.tempSens2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tempSens3">
+        <th mat-header-cell *matHeaderCellDef> tempSens3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.tempSens3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="flowSens1">
+        <th mat-header-cell *matHeaderCellDef> flowSens1 </th>
+        <td mat-cell *matCellDef="let element"> {{element.flowSens1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="flowSens2">
+        <th mat-header-cell *matHeaderCellDef> flowSens2 </th>
+        <td mat-cell *matCellDef="let element"> {{element.flowSens2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="flowSens3">
+        <th mat-header-cell *matHeaderCellDef> flowSens3 </th>
+        <td mat-cell *matCellDef="let element"> {{element.flowSens3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentTimestamp">
+        <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentTimestamp | date }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>

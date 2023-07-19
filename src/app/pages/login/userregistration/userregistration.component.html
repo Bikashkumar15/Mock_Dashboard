@@ -1,0 +1,53 @@
+<div class="card">
+    <h4 class="card-header">Register</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['firstName']?.errors }" />
+                <div *ngIf="submitted && form['firstName']?.errors" class="invalid-feedback">
+                    <div *ngIf="form['firstName']?.errors['required']">First Name is required</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['lastName']?.errors }" />
+                <div *ngIf="submitted && form['lastName']?.errors" class="invalid-feedback">
+                    <div *ngIf="form['lastName']?.errors['required']">Last Name is required</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">User Name</label>
+                <input type="text" formControlName="userName" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['username']?.errors }" />
+                <div *ngIf="submitted && form['userName']?.errors" class="invalid-feedback">
+                    <div *ngIf="form['userName']?.errors['required']">Username is required</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form['password']?.errors }" />
+                <div *ngIf="submitted && form['password']?.errors" class="invalid-feedback">
+                    <div *ngIf="form['password']?.errors['required']">Password is required</div>
+                    <div *ngIf="form['password']?.errors['minlength']">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                    Register
+                </button>
+                <a routerLink="../" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+
+        <div *ngIf="success && submitted" class="alert alert-success">
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+          </div>
+
+          <div *ngIf="!success && submitted"  class="alert alert-danger">
+            <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+          </div>
+        </div>   
+
+   
+</div>

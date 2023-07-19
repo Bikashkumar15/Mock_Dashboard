@@ -1,0 +1,19 @@
+.height-100vh{
+    height: 100vh;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+    overflow: auto;
+  }
+  
+  .dp-wrapper {
+    img {
+        width: 10%;
+    }
+    .cursor-pointer {
+        cursor: pointer;
+    }
+  }
