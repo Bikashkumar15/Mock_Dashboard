@@ -87,8 +87,8 @@ export class AuthService {
     return this._httpClient.get(`/api/flowfeed?machineId=${machineId}&timeStamp=${selecteddate}`);
   }
 
-  getTdsSensorGrphRaw(machineId: any, fromDate: any, toDate:any) {
-    return this._httpClient.get(`/api/gettds?deviceId=${machineId}&fromDate=${fromDate}&toDate=${toDate}`);
+  getTdsSensorGrphRaw(machineId: any,  noOfDays:any) {
+    return this._httpClient.get(`/api/gettds?deviceId=${machineId}&noOfDays=${noOfDays}`);
   }
 
   getliveSensorInfo() {

@@ -51,7 +51,7 @@
         <div class="row">
             <div class="row">
 
-                <div class="col-lg-4 col-md-2 col-sm-2">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <!-- <mat-form-field class="example-full-width" appearance="fill" *ngIf="sensorDetails">
             <mat-label>Sensor</mat-label>
             <input type="text"
@@ -66,20 +66,18 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field> -->
-                    <label for="Sensor"> Customer Name </label>
+                    <label for="Sensor"> Customer Name </label> :
                     <select name="" id="" class="form-control" [(ngModel)]="slectedSensor" (change)="getSesnorData()">
                         <option [ngValue]="sens" *ngFor="let sens of machineIds">{{sens?.customerName}}</option>
                     </select>
                 </div>
-                <div class="col-lg-4 col-md-2 col-sm-2">
-                    <label for="date"> From Date </label>
-                    <input type="date" [(ngModel)]="fromDate" class="form-control" [min]="minV" [max]="maxV"
-                        (change)="getSesnorData()">
-                </div>
-                <div class="col-lg-4 col-md-2 col-sm-2">
-                    <label for="date"> ToDate </label>
-                    <input type="date" [(ngModel)]="toDate" class="form-control" [min]="minV" [max]="maxV"
-                        (change)="getSesnorData()">
+                <div class="col-lg-6 col-md-6 col-sm-6"></div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+            
+                    <label for="Datepicker"> Select No. of Day: </label> 
+                    <select name="" id="" class="form-control" [(ngModel)]="sdate" (change)="getSesnorData()">
+                        <option [ngValue]="d" *ngFor="let d of dateoptions">{{d?.displayvalue}}</option>
+                    </select>
                 </div>
             </div>
             <hr class="dotted-line">

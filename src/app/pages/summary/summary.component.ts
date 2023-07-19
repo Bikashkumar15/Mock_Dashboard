@@ -30,6 +30,15 @@ export class SummaryComponent implements OnInit {
   maxV:any = new Date().toISOString().slice(0,10);
   deviceCount:any;
 tdsCount:any;
+sdate:any={};
+
+
+
+dateoptions=[{value:1,displayvalue:"1 Day"},
+  {value:6,displayvalue:"7 Days"},
+  {value:29,displayvalue:"30 Days"},
+  {value:44,displayvalue:"45 Days"}];
+
 
   ngOnInit() {
    
@@ -52,7 +61,7 @@ tdsCount:any;
     let todt = new Date();
         todt.setFullYear(todt.getFullYear()-1);
     this.minV = todt.toISOString().slice(0,10);
-
+ this.sdate=this.dateoptions[0];
 
 
     
@@ -86,7 +95,7 @@ tdsCount:any;
     this.tempDataFlag=false;
     this.flowDataFlag=false;
 
-    this.authService.getTdsSensorGrphRaw(this.slectedSensor.deviceId,this.fromDate,6).subscribe((tdsResp:any)=>{
+    this.authService.getTdsSensorGrphRaw(this.slectedSensor.deviceId,this.sdate.value).subscribe((tdsResp:any)=>{
       console.log(tdsResp);
       this.tdsData = tdsResp;
       this.tdsCount=this.tdsData.length;
