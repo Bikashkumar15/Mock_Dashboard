@@ -34,7 +34,7 @@ sdate:any={};
 
 
 
-dateoptions=[{value:1,displayvalue:"1 Day"},
+dateoptions=[{value:0,displayvalue:"1 Day"},
   {value:6,displayvalue:"7 Days"},
   {value:29,displayvalue:"30 Days"},
   {value:44,displayvalue:"45 Days"}];
@@ -98,13 +98,12 @@ dateoptions=[{value:1,displayvalue:"1 Day"},
     this.authService.getTdsSensorGrphRaw(this.slectedSensor.deviceId,this.sdate.value).subscribe((tdsResp:any)=>{
       console.log(tdsResp);
       this.tdsData = tdsResp;
-      this.tdsCount=this.tdsData.length;
       console.log("no of TDS count",this.tdsCount);
       this.tdsDataFlag = true;
     }, () => {
     }
     )
-    this.authService.getTempSensorGrphRaw(this.slectedSensor.deviceId,this.selectedDate).subscribe((tempResp:any)=>{
+    this.authService.getTempSensorGrphRaw(this.slectedSensor.deviceId,this.sdate.value).subscribe((tempResp:any)=>{
       console.log(tempResp);
       this.tempData=tempResp;
       this.tempDataFlag = true;
@@ -112,7 +111,7 @@ dateoptions=[{value:1,displayvalue:"1 Day"},
     }
     )
 
-    this.authService.getFlowSensorGrphRaw(this.slectedSensor.deviceId,this.selectedDate).subscribe((flowResp:any)=>{
+    this.authService.getFlowSensorGrphRaw(this.slectedSensor.deviceId,this.sdate.value).subscribe((flowResp:any)=>{
       console.log(flowResp);
       this.flowData=flowResp;
       this.flowDataFlag=true;

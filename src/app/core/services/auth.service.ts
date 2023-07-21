@@ -80,15 +80,15 @@ export class AuthService {
   //   return this._httpClient.get(`/api/tdsfeed?machineId=${machineId}&timeStamp=${selecteddate}`);
   // }
 
-  getTempSensorGrphRaw(machineId: any, selecteddate: any) {
-    return this._httpClient.get(`/api/tempfeed?machineId=${machineId}&timeStamp=${selecteddate}`);
+  getTempSensorGrphRaw(deviceId: any, noOfDays: any) {
+    return this._httpClient.get(`/api/tempfeed?deviceId=${deviceId}&dayRange=${noOfDays}`);
   }
-  getFlowSensorGrphRaw(machineId: any, selecteddate: any) {
-    return this._httpClient.get(`/api/flowfeed?machineId=${machineId}&timeStamp=${selecteddate}`);
+  getFlowSensorGrphRaw(deviceId: any, noOfDays: any) {
+    return this._httpClient.get(`/api/flowfeed?deviceId=${deviceId}&dayRange=${noOfDays}`);
   }
 
-  getTdsSensorGrphRaw(machineId: any,  noOfDays:any) {
-    return this._httpClient.get(`/api/gettds?deviceId=${machineId}&noOfDays=${noOfDays}`);
+  getTdsSensorGrphRaw(deviceId: any,  noOfDays:any) {
+    return this._httpClient.get(`/api/gettds?deviceId=${deviceId}&dayRange=${noOfDays}`);
   }
 
   getliveSensorInfo() {

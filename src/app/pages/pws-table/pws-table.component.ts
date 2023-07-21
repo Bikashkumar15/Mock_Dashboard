@@ -24,12 +24,10 @@ export interface PeriodicElement {deviceId:string;
 
  
 export class PwsTableComponent implements OnInit , AfterViewInit  {
-    //selectedDate!: string;
-    minV:any; //"2023-07-01";
+  
+    minV:any; 
     maxV:any = new Date().toISOString().slice(0,10);
-    // machineIds: any;
-    // slectedSensor: any;
-   // [dataSource: string]: any;
+
   
   constructor(private authService: AuthService) {  }
   displayedColumns: string[] = ['deviceId','latitude', 'tdsSens1', 'tdsSens2', 'tdsSens3','tempSens1', 'tempSens2', 'tempSens3','flowSens1', 'flowSens2', 'flowSens3','currentTimestamp'];
@@ -49,7 +47,7 @@ ExportTOExcel()
   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
   
   /* save to file */
-  XLSX.writeFile(wb, 'SheetJS.xlsx');
+  XLSX.writeFile(wb, 'Pagagon Water System.xlsx');
   
 }
   ngAfterViewInit() {
@@ -72,14 +70,10 @@ toDate:any=new Date().toISOString().slice(0,10);
  
   ngOnInit(){
 
-    // this.fromDate = "2023-06-20 00:00:00";
-    // this.toDate="2023-06-30 12:05:00";
-    // this.deviceId="068047145410044158D6A080A0800003";
      this.selectedDate =new Date().toISOString().substring(0,10);
     this.getSensorList();
 
-   
-
+  
       //  this.updateSubscription = interval(60000).subscribe(
       //  (val) => { this.getSensorList()});
     
@@ -89,7 +83,6 @@ toDate:any=new Date().toISOString().slice(0,10);
     let todt = new Date();
         todt.setFullYear(todt.getFullYear()-1);
     this.minV = todt.toISOString().slice(0,10);
-    //this.getDeviceHistoryByDate();
   
   }
   getSensorList() {
